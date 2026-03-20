@@ -11,6 +11,10 @@ public class UIManager : MonoBehaviour
     private Button btnDice;
 
     [SerializeField]
+    private Button btnStatus;
+
+
+    [SerializeField]
     private Text txtDiceTurn;
 
 
