@@ -6,14 +6,26 @@ using DG.Tweening;
 public class GameManager : MonoBehaviour
 {
     public PlayerManager player;
+    public UIManager uiManager;
     public List<Transform> tiles;
 
     private bool isMoving = false;
+    public int currentTurn = 0;
+    public int maxTurn = 12;
+
+
 
     public void MoveSteps(int step)
     {
         if (isMoving) return;
-        StartCoroutine(MoveCoroutine(step));
+        if (currentTurn >= maxTurn) return;
+        else
+        {
+            currentTurn++;
+            Debug.Log("ターン: " + currentTurn);
+            StartCoroutine(MoveCoroutine(step));
+            
+        }
     }
 
     IEnumerator MoveCoroutine(int step)
@@ -33,5 +45,7 @@ public class GameManager : MonoBehaviour
         }
 
         isMoving = false;
+
+        uiManager.OnCountDiceTurn();
     }
 }
