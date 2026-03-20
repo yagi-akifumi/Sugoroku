@@ -18,7 +18,8 @@ public class UIManager : MonoBehaviour
 
     public void OnClickDice()
     {
-        Debug.Log("ボタンがおされた！");
-        gameManager.MoveOneStep();
+        int dice = Random.Range(1, 7);
+        Debug.Log("出目: " + dice);
+        gameManager.MoveSteps(dice);
     }
 }
