@@ -17,10 +17,14 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Text txtDiceTurn;
 
+    [SerializeField]
+    private StatusGenerator statusGenerator;
 
-    public void Start()
+
+    public void SetUpUIManager()
     {
         btnDice.onClick.AddListener(OnClickDice);
+        btnStatus.onClick.AddListener(() => statusGenerator.ActivatePlacementStatusPopUp());
     }
 
 
@@ -30,6 +34,12 @@ public class UIManager : MonoBehaviour
         Debug.Log("出目: " + dice);
         gameManager.MoveSteps(dice);
     }
+
+    public void OnClickStatus()
+    {
+        
+    }
+
 
     public void OnCountDiceTurn()
     {

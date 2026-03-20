@@ -13,7 +13,15 @@ public class GameManager : MonoBehaviour
     public int currentTurn = 0;
     public int maxTurn = 12;
 
+    [SerializeField]
+    private StatusGenerator statusGenerator;
 
+
+    public void Start()
+    {
+        uiManager.SetUpUIManager();
+        statusGenerator.SetUpStatusGenerator();
+    }
 
     public void MoveSteps(int step)
     {
