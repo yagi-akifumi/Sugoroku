@@ -3,6 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 
+public enum GameState
+{
+    Idle,
+    PlayerMoving
+}
+
 public class GameManager : MonoBehaviour
 {
     public PlayerManager player;
@@ -13,6 +19,7 @@ public class GameManager : MonoBehaviour
     public int currentTurn = 0;
     public int maxTurn = 12;
 
+    public GameState currentState = GameState.Idle;
     [SerializeField]
     private StatusGenerator statusGenerator;
 
@@ -26,19 +33,25 @@ public class GameManager : MonoBehaviour
     public void MoveSteps(int step)
     {
         if (isMoving) return;
-        if (currentTurn >= maxTurn) return;
-        else
+        if (currentTurn >= maxTurn)
         {
-            currentTurn++;
-            //Debug.Log("ターン: " + currentTurn);
-            StartCoroutine(MoveCoroutine(step));
-            
+            uiManager.SetDiceButtonInteractable(true);
+            uiManager.SetDiceVisible(true);
+            return;
         }
+        currentTurn++;
+        
+        StartCoroutine(MoveCoroutine(step));
+
+
     }
 
-    IEnumerator MoveCoroutine(int step)
+    private IEnumerator MoveCoroutine(int step)
     {
         isMoving = true;
+        currentState = GameState.PlayerMoving;
+
+        uiManager.SetDiceButtonInteractable(false);
 
         for (int i = 0; i < step; i++)
         {
@@ -53,7 +66,10 @@ public class GameManager : MonoBehaviour
         }
 
         isMoving = false;
+        currentState = GameState.Idle;
 
         uiManager.OnCountDiceTurn();
+        uiManager.SetDiceButtonInteractable(true);
+        uiManager.InitializeDice();
     }
 }

@@ -32,20 +32,40 @@ public class UIManager : MonoBehaviour
 
     public void OnClickDice()
     {
-        int dice = diceManager.RollDice();
+        btnDice.interactable = false;
+        diceManager.RollDice(OnDiceRolled);
+    }
+
+    private void OnDiceRolled(int dice)
+    {
         Debug.Log("出目: " + dice);
-        if (dice <= 0) return;
+
+        if (dice <= 0)
+        {
+            btnDice.interactable = true;
+            return;
+        }
+
         gameManager.MoveSteps(dice);
     }
-
-    public void OnClickStatus()
-    {
-        
-    }
-
 
     public void OnCountDiceTurn()
     {
         txtDiceTurn.text = gameManager.currentTurn.ToString();
+    }
+
+    public void SetDiceButtonInteractable(bool isActive)
+    {
+        btnDice.interactable = isActive;
+    }
+
+    public void SetDiceVisible(bool isVisible)
+    {
+        diceManager.SetDiceVisible(isVisible);
+    }
+
+    public void InitializeDice()
+    {
+        diceManager.InitializeDiceCanvasGroup();
     }
 }

@@ -358,6 +358,7 @@ GameObject:
   - component: {fileID: 341732691}
   - component: {fileID: 341732693}
   - component: {fileID: 341732692}
+  - component: {fileID: 341732694}
   m_Layer: 5
   m_Name: Dice
   m_TagString: Untagged
@@ -422,6 +423,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 341732690}
   m_CullTransparentMesh: 1
+--- !u!225 &341732694
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341732690}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1001 &367688860
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1890,6 +1903,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diceDataSO: {fileID: 11400000, guid: 4f4b8fb93ab954f4fad357b51b12b5d0, type: 2}
   diceImage: {fileID: 341732692}
+  diceCanvasGroup: {fileID: 341732694}
+  currentState: 0
 --- !u!4 &1410256918
 Transform:
   m_ObjectHideFlags: 0
@@ -2059,6 +2074,7 @@ MonoBehaviour:
   - {fileID: 633835875}
   currentTurn: 0
   maxTurn: 12
+  currentState: 0
   statusGenerator: {fileID: 1518368282}
 --- !u!114 &1469668764 stripped
 MonoBehaviour:
@@ -2524,6 +2540,7 @@ MonoBehaviour:
   btnStatus: {fileID: 296196709}
   txtDiceTurn: {fileID: 1469668764}
   statusGenerator: {fileID: 1518368282}
+  diceManager: {fileID: 1410256917}
 --- !u!4 &1611703312
 Transform:
   m_ObjectHideFlags: 0
