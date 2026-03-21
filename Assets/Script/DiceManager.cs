@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public enum DiceState
 {
@@ -20,20 +21,32 @@ public class DiceManager : MonoBehaviour
     [SerializeField]
     private CanvasGroup diceCanvasGroup;
 
+    [SerializeField]
+    private RectTransform diceRectTransform;
+
     private DiceData currentDiceData;
 
     public DiceState currentState = DiceState.Idle;
 
+    private Tween bounceTween;
+    private float defaultAnchoredPosY;
+
+    private void Awake()
+    {
+        if (diceRectTransform != null)
+        {
+            defaultAnchoredPosY = diceRectTransform.anchoredPosition.y;
+        }
+    }
+
     public void RollDice(Action<int> onComplete)
     {
-        //サイコロが回転中
         if (currentState == DiceState.Rolling)
         {
             Debug.Log("サイコロは回転中です");
             return;
         }
 
-        //DiceDataSOが設定されていない
         if (diceDataSO == null)
         {
             Debug.LogError("DiceDataSOが設定されていません");
@@ -41,7 +54,6 @@ public class DiceManager : MonoBehaviour
             return;
         }
 
-        //diceDatasList にデータが入っていない
         if (diceDataSO.diceDatasList == null || diceDataSO.diceDatasList.Count == 0)
         {
             Debug.LogError("diceDatasList にデータが入っていません");
@@ -51,14 +63,42 @@ public class DiceManager : MonoBehaviour
 
         currentState = DiceState.Rolling;
         SetDiceVisible(true);
+
         StartCoroutine(RollDiceCoroutine(onComplete));
+    }
+
+    private void PlayDiceResultAnimation()
+    {
+        if (diceRectTransform == null) return;
+
+        diceRectTransform.DOKill();
+        diceRectTransform.localScale = Vector3.one;
+        diceRectTransform.localRotation = Quaternion.identity;
+
+        Sequence seq = DOTween.Sequence();
+
+        seq.Append(diceRectTransform.DOScale(1.35f, 0.12f).SetEase(Ease.OutQuad));
+        seq.Append(diceRectTransform.DOScale(1.0f, 0.18f).SetEase(Ease.OutBack));
+
+        seq.Join(
+            diceRectTransform.DOShakeAnchorPos(
+                duration: 0.2f,
+                strength: 12f,
+                vibrato: 12,
+                randomness: 90f,
+                snapping: false,
+                fadeOut: true
+            )
+        );
     }
 
     private IEnumerator RollDiceCoroutine(Action<int> onComplete)
     {
-        float totalTime = 2.5f;   // 演出全体の長さ
+        float totalTime = 2.5f;
         float elapsed = 0f;
-        float interval = 0.05f;   // 最初の切り替え速度
+        float interval = 0.05f;
+
+        StartShuffleBounceAnimation();
 
         while (elapsed < totalTime)
         {
@@ -76,6 +116,8 @@ public class DiceManager : MonoBehaviour
             interval += 0.01f;
         }
 
+        StopShuffleBounceAnimation();
+
         int finalIndex = UnityEngine.Random.Range(0, diceDataSO.diceDatasList.Count);
         currentDiceData = diceDataSO.diceDatasList[finalIndex];
 
@@ -83,6 +125,8 @@ public class DiceManager : MonoBehaviour
         {
             diceImage.sprite = currentDiceData.diceSprite;
         }
+
+        PlayDiceResultAnimation();
 
         yield return new WaitForSeconds(1.0f);
 
@@ -111,7 +155,6 @@ public class DiceManager : MonoBehaviour
         }
         else if (diceImage != null)
         {
-            // CanvasGroup未設定時の保険
             Color color = diceImage.color;
             color.a = isVisible ? 1f : 0f;
             diceImage.color = color;
@@ -120,6 +163,11 @@ public class DiceManager : MonoBehaviour
 
     public void InitializeDiceCanvasGroup()
     {
+        if (bounceTween != null && bounceTween.IsActive())
+        {
+            bounceTween.Kill();
+        }
+
         if (diceCanvasGroup != null)
         {
             diceCanvasGroup.alpha = 0f;
@@ -127,6 +175,51 @@ public class DiceManager : MonoBehaviour
             diceCanvasGroup.blocksRaycasts = false;
         }
 
+        if (diceRectTransform != null)
+        {
+            Vector2 pos = diceRectTransform.anchoredPosition;
+            pos.y = defaultAnchoredPosY;
+            diceRectTransform.anchoredPosition = pos;
+            diceRectTransform.localScale = Vector3.one;
+            diceRectTransform.localRotation = Quaternion.identity;
+        }
+
         currentState = DiceState.Idle;
+    }
+
+    private void StartShuffleBounceAnimation()
+    {
+        if (diceRectTransform == null) return;
+
+        // 既存Tween停止
+        if (bounceTween != null && bounceTween.IsActive())
+        {
+            bounceTween.Kill();
+        }
+
+        // 念のため元の位置に戻す
+        Vector2 pos = diceRectTransform.anchoredPosition;
+        pos.y = defaultAnchoredPosY;
+        diceRectTransform.anchoredPosition = pos;
+
+        bounceTween = diceRectTransform
+            .DOAnchorPosY(defaultAnchoredPosY + 250f, 0.3f)
+            .SetEase(Ease.OutQuad)
+            .SetLoops(-1, LoopType.Yoyo);
+
+        diceRectTransform.DOAnchorPosY(defaultAnchoredPosY + 30f, 0.3f);
+    }
+
+    private void StopShuffleBounceAnimation()
+    {
+        if (diceRectTransform == null) return;
+
+        if (bounceTween != null && bounceTween.IsActive())
+        {
+            bounceTween.Kill();
+        }
+
+        diceRectTransform.DOAnchorPosY(defaultAnchoredPosY, 0.1f)
+            .SetEase(Ease.OutQuad);
     }
 }

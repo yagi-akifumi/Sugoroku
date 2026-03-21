@@ -1904,6 +1904,7 @@ MonoBehaviour:
   diceDataSO: {fileID: 11400000, guid: 4f4b8fb93ab954f4fad357b51b12b5d0, type: 2}
   diceImage: {fileID: 341732692}
   diceCanvasGroup: {fileID: 341732694}
+  diceRectTransform: {fileID: 341732691}
   currentState: 0
 --- !u!4 &1410256918
 Transform:
