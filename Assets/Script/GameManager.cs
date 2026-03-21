@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 {
     public PlayerManager player;
     public UIManager uiManager;
-    public List<Transform> tiles;
+    public List<Tile> tiles;
 
     private bool isMoving = false;
     public int currentTurn = 0;
@@ -55,9 +55,15 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < step; i++)
         {
-            player.currentIndex = (player.currentIndex + 1) % tiles.Count;
+            int nextIndex = (player.currentIndex + 1) % tiles.Count;
+            Tile nextTile = tiles[nextIndex];
 
-            Vector3 targetPos = tiles[player.currentIndex].position;
+            // 次に入るTileの向きでアニメ変更
+            player.SetMoveAnimation(nextTile.moveDirection);
+
+            player.currentIndex = nextIndex;
+
+            Vector3 targetPos = nextTile.transform.position;
 
             yield return player.transform
                 .DOJump(targetPos, 0.5f, 1, 0.3f)
@@ -65,11 +71,18 @@ public class GameManager : MonoBehaviour
                 .WaitForCompletion();
         }
 
+        // 止まったら正面向き待機
+        player.SetIdleFront();
+
         isMoving = false;
         currentState = GameState.Idle;
 
         uiManager.OnCountDiceTurn();
         uiManager.SetDiceButtonInteractable(true);
         uiManager.InitializeDice();
+
+        // 将来UTAGEイベントに使える
+        Tile currentTile = tiles[player.currentIndex];
+        Debug.Log("停止マス: " + currentTile.index + " / eventId: " + currentTile.eventId);
     }
 }
