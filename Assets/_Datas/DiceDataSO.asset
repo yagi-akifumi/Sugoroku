@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f484b6b72810f40c8b48900846e5d432, type: 3}
+  m_Name: DiceDataSO
+  m_EditorClassIdentifier: 
+  diceDatasList:
+  - diceNum: 1
+    diceSprite: {fileID: -2165808416186281336, guid: 65b442af56e1347d19cd868e152d9582, type: 3}
+  - diceNum: 2
+    diceSprite: {fileID: -418678913202170186, guid: fd7136cfb305b4bff94f4eb0e762a965, type: 3}
+  - diceNum: 3
+    diceSprite: {fileID: -5059547392018692610, guid: fed6d4ffbb8514d85af2a468110714fd, type: 3}
+  - diceNum: 4
+    diceSprite: {fileID: -3216283430304802289, guid: 6afd09e32009d48fa93d9de7fefbe11f, type: 3}
+  - diceNum: 5
+    diceSprite: {fileID: 2360226604868353026, guid: a295b0ab8d93447d69fb418af6d06781, type: 3}
+  - diceNum: 6
+    diceSprite: {fileID: 3383016452190782798, guid: 09a9a16913c9e47b587b673ba2b7e2fd, type: 3}

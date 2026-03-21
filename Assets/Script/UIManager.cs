@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private StatusGenerator statusGenerator;
 
+    [SerializeField]
+    private DiceManager diceManager;
 
     public void SetUpUIManager()
     {
@@ -30,8 +32,9 @@ public class UIManager : MonoBehaviour
 
     public void OnClickDice()
     {
-        int dice = Random.Range(1, 7);
+        int dice = diceManager.RollDice();
         Debug.Log("出目: " + dice);
+        if (dice <= 0) return;
         gameManager.MoveSteps(dice);
     }
 
