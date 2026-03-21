@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
         else
         {
             currentTurn++;
-            Debug.Log("ターン: " + currentTurn);
+            //Debug.Log("ターン: " + currentTurn);
             StartCoroutine(MoveCoroutine(step));
             
         }

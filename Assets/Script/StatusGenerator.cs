@@ -54,7 +54,7 @@ public class StatusGenerator : MonoBehaviour
     /// </summary>
     public void InActivatePlacementStatusPopUp()
     {
-        Debug.Log("非表示にするよ");
+        //Debug.Log("非表示にするよ");
         placementStatusPopUp.gameObject.SetActive(false);
     }
 }
