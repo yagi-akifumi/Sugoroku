@@ -1,9 +1,10 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-
+    [SerializeField] private Transform playerVisual;
     public int currentIndex = 0;
 
     public void SetMoveAnimation(MoveDirection direction)
@@ -40,5 +41,17 @@ public class PlayerManager : MonoBehaviour
         animator.SetFloat("X", 0f);
         animator.SetFloat("Y", -1f);
         animator.SetBool("IsMoving", false);
+    }
+
+    public Tween PlayJumpVisual(float jumpPower, float duration)
+    {
+        if (playerVisual == null) return null;
+
+        playerVisual.DOKill();
+        playerVisual.localPosition = Vector3.zero;
+
+        return playerVisual
+            .DOLocalJump(Vector3.zero, jumpPower, 1, duration)
+            .SetEase(Ease.OutQuad);
     }
 }

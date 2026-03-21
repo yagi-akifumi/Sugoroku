@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         currentTurn++;
-        
+
         StartCoroutine(MoveCoroutine(step));
 
 
@@ -65,10 +65,13 @@ public class GameManager : MonoBehaviour
 
             Vector3 targetPos = nextTile.transform.position;
 
-            yield return player.transform
-                .DOJump(targetPos, 0.5f, 1, 0.3f)
-                .SetEase(Ease.OutQuad)
-                .WaitForCompletion();
+            Tween moveTween = player.transform
+                .DOMove(targetPos, 0.3f)
+                .SetEase(Ease.Linear);
+
+            player.PlayJumpVisual(0.5f, 0.3f);
+
+            yield return moveTween.WaitForCompletion();
         }
 
         // 止まったら正面向き待機
