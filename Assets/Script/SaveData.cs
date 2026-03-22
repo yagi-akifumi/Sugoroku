@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System;　// システムを省略
+using System;// システムを省略
 
 // Serializable →class版のシリアライズフィールド
 [Serializable]
