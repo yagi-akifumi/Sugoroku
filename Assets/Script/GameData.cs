@@ -24,10 +24,11 @@ public class GameData : MonoBehaviour
     public int life = 0;
     public int power = 0;
     public int intelligence = 0;
-    public int guts = 0;
     public int coolness = 0;
     public int morality = 0;
     public int kindness = 0;
+    public int money = 0;
+
 
     // ===== 初期化 =====
     public void Init()
@@ -38,10 +39,10 @@ public class GameData : MonoBehaviour
         life = 0;
         power = 0;
         intelligence = 0;
-        guts = 0;
         coolness = 0;
         morality = 0;
         kindness = 0;
+        money = 0;
     }
 
     void Awake()

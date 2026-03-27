@@ -19,9 +19,6 @@ public class PlacementStatusPopUp : MonoBehaviour
     private Text txtStatusIntelligence;
 
     [SerializeField]
-    private Text txtStatusGuts;
-
-    [SerializeField]
     private Text txtStatusCoolness;
 
     [SerializeField]
@@ -29,6 +26,9 @@ public class PlacementStatusPopUp : MonoBehaviour
 
     [SerializeField]
     private Text txtStatusKindness;
+
+    [SerializeField]
+    private Text txtStatusMoney;
 
     [SerializeField]
     private Button btnClose;

@@ -16,9 +16,9 @@ public class SaveData : object
     public int life;
     public int power;
     public int intelligence;
-    public int guts;
     public int coolness;
     public int morality;
     public int kindness;
+    public int money;
 
 }

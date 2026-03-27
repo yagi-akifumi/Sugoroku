@@ -2644,7 +2644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8a64fd206644e9a8393f2510e9afc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementStatusPopUpPrefab: {fileID: 1667521245386946446, guid: fac504435c0f04c2cba542070a6984f3, type: 3}
+  placementStatusPopUpPrefab: {fileID: 7247930801280794113, guid: fac504435c0f04c2cba542070a6984f3, type: 3}
   canvasTran: {fileID: 674153917}
   mainCanvas: {fileID: 0}
 --- !u!1001 &1528847721

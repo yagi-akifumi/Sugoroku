@@ -112,10 +112,11 @@ public class GameManager : MonoBehaviour
         saveData.life = GameData.instance.life;
         saveData.power = GameData.instance.power;
         saveData.intelligence = GameData.instance.intelligence;
-        saveData.guts = GameData.instance.guts;
         saveData.coolness = GameData.instance.coolness;
         saveData.morality = GameData.instance.morality;
         saveData.kindness = GameData.instance.kindness;
+        saveData.money = GameData.instance.money;
+
 
         SaveManager.Save(saveData);
     }
@@ -144,10 +145,11 @@ public class GameManager : MonoBehaviour
         GameData.instance.life = saveData.life;
         GameData.instance.power = saveData.power;
         GameData.instance.intelligence = saveData.intelligence;
-        GameData.instance.guts = saveData.guts;
         GameData.instance.coolness = saveData.coolness;
         GameData.instance.morality = saveData.morality;
         GameData.instance.kindness = saveData.kindness;
+        GameData.instance.money = saveData.money;
+
 
         ApplyFromGameData();
 
