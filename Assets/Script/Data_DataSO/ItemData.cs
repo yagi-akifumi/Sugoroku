@@ -1,16 +1,19 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemData : MonoBehaviour
+public enum ItemType
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    Consumable,   // 消耗品
+    Equipment,    // 装備品
+    EventItem,    // イベント用
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+[System.Serializable]
+public class ItemData
+{
+    public int itemId;
+    public string itemName;
+    public int itemPrice;
+    public ItemType itemType;
+    public string description;           
 }
