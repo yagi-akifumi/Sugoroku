@@ -4,43 +4,27 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class PlacementStatusPopUp : MonoBehaviour
+public class PlacementItemListPopUp : MonoBehaviour
 {
-    [SerializeField]
-    private Text txtName;
-
-    [SerializeField]
-    private Text txtStatusLife;
-
-    [SerializeField]
-    private Text txtStatusPower;
-
-    [SerializeField]
-    private Text txtStatusIntelligence;
-
-    [SerializeField]
-    private Text txtStatusCoolness;
-
-    [SerializeField]
-    private Text txtStatusMorallity;
-
-    [SerializeField]
-    private Text txtStatusKindness;
-
-    [SerializeField]
-    private Text txtStatusMoney;
-
     [SerializeField]
     private Button btnClose;
 
-    private StatusGenerator statusGenerator;
+    [SerializeField]
+    private SelectItem selectItemPrefab;
+
+    [SerializeField]
+    private List<SelectItem> selectItemsList = new List<SelectItem>();
+
+    private ItemData chooseItemData;
+
+    private ItemListGenerator itemListGenerator;
 
     [SerializeField, Header("キャンバス")]
     private CanvasGroup canvasGroup;
 
-    public void SetUpPlacementStatusPopUp(StatusGenerator statusGenerator)
+    public void SetUpPlacementItemListPopUp(ItemListGenerator itemListGenerator)
     {
-        this.statusGenerator = statusGenerator;
+        this.itemListGenerator = itemListGenerator;
 
         // 各ボタンの操作を押せない状態にする
         SwitchActivateButtons(false);
@@ -53,6 +37,7 @@ public class PlacementStatusPopUp : MonoBehaviour
         SwitchActivateButtons(true);
     }
 
+
     /// <summary>
     /// 各ボタンのアクティブ状態の切り替え
     /// </summary>
@@ -61,6 +46,7 @@ public class PlacementStatusPopUp : MonoBehaviour
     {
         btnClose.interactable = isSwitch;
     }
+
 
     /// <summary>
     /// ポップアップの表示
@@ -71,13 +57,13 @@ public class PlacementStatusPopUp : MonoBehaviour
         canvasGroup.DOFade(1.0f, 0.5f);
     }
 
-    /// <summary>
+    // <summary>
     /// ポップアップの非表示
     /// </summary>
     public void HidePopUp()
     {
         // ポップアップの非表示
-       
-        canvasGroup.DOFade(0.0f, 0.5f).OnComplete(() => statusGenerator.InActivatePlacementStatusPopUp());
+        Debug.Log("閉じるボタン実装");
+        canvasGroup.DOFade(0.0f, 0.5f).OnComplete(() => itemListGenerator.InActivatePlacementItemListPopUp());
     }
 }

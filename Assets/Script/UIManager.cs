@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Button btnStatus;
 
+    [SerializeField]
+    private Button btnItemList;
 
     [SerializeField]
     private Text txtDiceTurn;
@@ -21,12 +23,17 @@ public class UIManager : MonoBehaviour
     private StatusGenerator statusGenerator;
 
     [SerializeField]
+    private ItemListGenerator itemListGenerator;
+
+    [SerializeField]
     private DiceManager diceManager;
 
     public void SetUpUIManager()
     {
         btnDice.onClick.AddListener(OnClickDice);
         btnStatus.onClick.AddListener(() => statusGenerator.ActivatePlacementStatusPopUp());
+        btnItemList.onClick.AddListener(() => itemListGenerator.ActivatePlacementItemListPopUp());
+
     }
 
 

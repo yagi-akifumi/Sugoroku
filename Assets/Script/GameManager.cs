@@ -23,11 +23,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private StatusGenerator statusGenerator;
+    [SerializeField]
+    private ItemListGenerator itemListGenerator;
+
+
 
     public void Start()
     {
         uiManager.SetUpUIManager();
         statusGenerator.SetUpStatusGenerator();
+        itemListGenerator.SetUpItemListGenerator();
 
         if (SaveManager.HasSaveData())
         {

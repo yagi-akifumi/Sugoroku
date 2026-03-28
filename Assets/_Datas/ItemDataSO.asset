@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69476a568958d4e8eb4b1d92918da7f8, type: 3}
   m_Name: ItemDataSO
   m_EditorClassIdentifier: 
-  diceDatasList: []
+  itemId: 0
+  itemName: 
+  itemPrice: 0
+  itemType: 0
+  description: 
