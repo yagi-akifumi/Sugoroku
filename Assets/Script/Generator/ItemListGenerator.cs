@@ -51,7 +51,7 @@ public class ItemListGenerator : MonoBehaviour
     }
 
     /// <summary>
-    /// ステータスの非表示
+    /// アイテムリストの非表示
     /// </summary>
     public void InActivatePlacementItemListPopUp()
     {
