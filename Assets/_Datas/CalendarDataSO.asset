@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4120fac0fe48c431ab49146b85cafe95, type: 3}
+  m_Name: CalendarDataSO
+  m_EditorClassIdentifier: 
+  calendarDatasList:
+  - calendarNum: 0
+    calendarTxt: "1\u5E74\u76EE4\u6708"
+    seasonType: 0
+  - calendarNum: 1
+    calendarTxt: "1\u5E74\u76EE5\u6708"
+    seasonType: 0
+  - calendarNum: 2
+    calendarTxt: "1\u5E74\u76EE6\u6708"
+    seasonType: 1
+  - calendarNum: 3
+    calendarTxt: "1\u5E74\u76EE7\u6708"
+    seasonType: 1
+  - calendarNum: 4
+    calendarTxt: "1\u5E74\u76EE8\u6708"
+    seasonType: 1
+  - calendarNum: 5
+    calendarTxt: "1\u5E74\u76EE9\u6708"
+    seasonType: 2
+  - calendarNum: 6
+    calendarTxt: "1\u5E74\u76EE10\u6708"
+    seasonType: 2
+  - calendarNum: 7
+    calendarTxt: "1\u5E74\u76EE11\u6708"
+    seasonType: 2
+  - calendarNum: 8
+    calendarTxt: "1\u5E74\u76EE12\u6708"
+    seasonType: 3
+  - calendarNum: 9
+    calendarTxt: "1\u5E74\u76EE1\u6708"
+    seasonType: 3
+  - calendarNum: 10
+    calendarTxt: "1\u5E74\u76EE2\u6708"
+    seasonType: 3
+  - calendarNum: 11
+    calendarTxt: "1\u5E74\u76EE3\u6708"
+    seasonType: 0
+  - calendarNum: 12
+    calendarTxt: "2\u5E74\u76EE4\u6708"
+    seasonType: 0
+  - calendarNum: 13
+    calendarTxt: "2\u5E74\u76EE5\u6708"
+    seasonType: 0
+  - calendarNum: 14
+    calendarTxt: "2\u5E74\u76EE6\u6708"
+    seasonType: 1
+  - calendarNum: 15
+    calendarTxt: "2\u5E74\u76EE7\u6708"
+    seasonType: 1
+  - calendarNum: 16
+    calendarTxt: "2\u5E74\u76EE8\u6708"
+    seasonType: 1
+  - calendarNum: 17
+    calendarTxt: "2\u5E74\u76EE9\u6708"
+    seasonType: 2
+  - calendarNum: 18
+    calendarTxt: "2\u5E74\u76EE10\u6708"
+    seasonType: 2
+  - calendarNum: 19
+    calendarTxt: "2\u5E74\u76EE11\u6708"
+    seasonType: 2
+  - calendarNum: 20
+    calendarTxt: "2\u5E74\u76EE12\u6708"
+    seasonType: 3
+  - calendarNum: 21
+    calendarTxt: "2\u5E74\u76EE1\u6708"
+    seasonType: 3
+  - calendarNum: 22
+    calendarTxt: "2\u5E74\u76EE2\u6708"
+    seasonType: 3
+  - calendarNum: 23
+    calendarTxt: "2\u5E74\u76EE3\u6708"
+    seasonType: 0
+  - calendarNum: 24
+    calendarTxt: "3\u5E74\u76EE4\u6708"
+    seasonType: 0
+  - calendarNum: 25
+    calendarTxt: "3\u5E74\u76EE5\u6708"
+    seasonType: 0
+  - calendarNum: 26
+    calendarTxt: "3\u5E74\u76EE6\u6708"
+    seasonType: 1
+  - calendarNum: 27
+    calendarTxt: "3\u5E74\u76EE7\u6708"
+    seasonType: 1
+  - calendarNum: 28
+    calendarTxt: "3\u5E74\u76EE8\u6708"
+    seasonType: 1
+  - calendarNum: 29
+    calendarTxt: "3\u5E74\u76EE9\u6708"
+    seasonType: 2
+  - calendarNum: 30
+    calendarTxt: "3\u5E74\u76EE10\u6708"
+    seasonType: 2
+  - calendarNum: 31
+    calendarTxt: "3\u5E74\u76EE11\u6708"
+    seasonType: 2
+  - calendarNum: 32
+    calendarTxt: "3\u5E74\u76EE12\u6708"
+    seasonType: 3
+  - calendarNum: 33
+    calendarTxt: "3\u5E74\u76EE1\u6708"
+    seasonType: 3
+  - calendarNum: 34
+    calendarTxt: "3\u5E74\u76EE2\u6708"
+    seasonType: 3
+  - calendarNum: 35
+    calendarTxt: "3\u5E74\u76EE3\u6708"
+    seasonType: 0
+  - calendarNum: 36
+    calendarTxt: "4\u5E74\u76EE4\u6708"
+    seasonType: 0

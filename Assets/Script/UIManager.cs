@@ -58,7 +58,15 @@ public class UIManager : MonoBehaviour
 
     public void OnCountDiceTurn()
     {
-        txtDiceTurn.text = gameManager.currentTurn.ToString();
+        string calendarText = DataBaseManager.instance.GetCalendarTextById(gameManager.currentTurn);
+
+        if (string.IsNullOrEmpty(calendarText))
+        {
+            txtDiceTurn.text = "日付未設定";
+            return;
+        }
+
+        txtDiceTurn.text = calendarText;
     }
 
     public void SetDiceButtonInteractable(bool isActive)
