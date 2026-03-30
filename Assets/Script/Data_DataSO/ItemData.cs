@@ -39,6 +39,8 @@ public class ItemData
     public int kindness;
     public int money;
 
+    public Sprite avatarSprite;
+
     public bool IsEquipment()
     {
         return itemType == ItemType.Equipment;

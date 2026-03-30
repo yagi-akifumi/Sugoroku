@@ -26,6 +26,7 @@ MonoBehaviour:
     morality: 0
     kindness: 0
     money: 0
+    avatarSprite: {fileID: 0}
   - itemId: 2
     itemName: "\u304A\u306B\u304E\u308A"
     itemPrice: 200
@@ -39,6 +40,7 @@ MonoBehaviour:
     morality: 0
     kindness: 0
     money: 0
+    avatarSprite: {fileID: 0}
   - itemId: 3
     itemName: "\u30AD\u30E3\u30E9\u30E1\u30EB"
     itemPrice: 500
@@ -52,6 +54,7 @@ MonoBehaviour:
     morality: 0
     kindness: 0
     money: 0
+    avatarSprite: {fileID: 0}
   - itemId: 3
     itemName: "\u30AD\u30E3\u30E9\u30E1\u30EB"
     itemPrice: 500
@@ -65,29 +68,32 @@ MonoBehaviour:
     morality: 0
     kindness: 0
     money: 0
+    avatarSprite: {fileID: 0}
   - itemId: 4
-    itemName: "\u5E3D\u5B50"
-    itemPrice: 500
-    itemType: 1
-    description: 
-    equipmentType: 1
-    power: 4
-    life: 0
-    intelligence: 0
-    coolness: 0
-    morality: 0
-    kindness: 0
-    money: 0
-  - itemId: 5
-    itemName: "T\u30B7\u30E3\u30C4"
+    itemName: "\u30D0\u30B9\u30B1\u670D"
     itemPrice: 500
     itemType: 1
     description: 
     equipmentType: 2
     power: 4
     life: 0
-    intelligence: 10
-    coolness: 0
+    intelligence: 0
+    coolness: 20
     morality: 0
     kindness: 0
     money: 0
+    avatarSprite: {fileID: 21300000, guid: 59865f3df92f44cf4967edd374d04828, type: 3}
+  - itemId: 5
+    itemName: "\u30B8\u30E3\u30FC\u30B8"
+    itemPrice: 500
+    itemType: 1
+    description: 
+    equipmentType: 3
+    power: 4
+    life: 0
+    intelligence: 10
+    coolness: 0
+    morality: 5
+    kindness: 0
+    money: 0
+    avatarSprite: {fileID: 21300000, guid: a488656516a404dc08c218994e3cd24d, type: 3}

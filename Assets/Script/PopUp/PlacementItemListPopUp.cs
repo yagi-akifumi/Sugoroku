@@ -15,7 +15,24 @@ public class PlacementItemListPopUp : MonoBehaviour
     [SerializeField]
     private List<SelectItem> selectItemsList = new List<SelectItem>();
 
-    private ItemData chooseItemData;
+    // ===== アバター =====
+    [SerializeField]
+    private Image imgHead;
+
+    [SerializeField]
+    private Image imgBody;
+
+    [SerializeField]
+    private Image imgLegs;
+
+    [SerializeField]
+    private Image imgAccessory;
+
+    // ===== デフォルト画像 =====
+    [Header("デフォルト画像")]
+    [SerializeField] private Sprite defaultHead;
+    [SerializeField] private Sprite defaultBody;
+    [SerializeField] private Sprite defaultLegs;
 
     private ItemListGenerator itemListGenerator;
 
@@ -33,7 +50,6 @@ public class PlacementItemListPopUp : MonoBehaviour
         SwitchActivateButtons(false);
 
         // 各ボタンにスクリプトの設定
-        Debug.Log("閉じるボタン設定");
         btnClose.onClick.AddListener(HidePopUp);
 
         // 各ボタンを押せる状態にする
@@ -56,8 +72,8 @@ public class PlacementItemListPopUp : MonoBehaviour
     /// </summary>
     public void ShowPopUp()
     {
-        // ポップアップの表示
         UpdateItemList();
+        UpdateAvatarView();
         canvasGroup.DOFade(1.0f, 0.5f);
     }
 
@@ -95,7 +111,63 @@ public class PlacementItemListPopUp : MonoBehaviour
                 selectItemsList.Add(newSelectItem);
             }
         }
+
+        UpdateAvatarView();
+
         Debug.Log("アイテムアップデート実装完了");
+    }
+
+    public void UpdateAvatarView()
+    {
+        SetAvatarPart(imgHead, GameData.instance.equippedHeadId, defaultHead, true);
+        SetAvatarPart(imgBody, GameData.instance.equippedBodyId, defaultBody, true);
+        SetAvatarPart(imgLegs, GameData.instance.equippedLegsId, defaultLegs, true);
+
+        // アクセは未装備なら非表示
+        SetAvatarPart(imgAccessory, GameData.instance.equippedAccessoryId, null, false);
+    }
+
+    private void SetAvatarPart(Image targetImage, int itemId, Sprite defaultSprite, bool useDefault)
+    {
+        if (targetImage == null)
+        {
+            return;
+        }
+
+        if (itemId < 0)
+        {
+            if (useDefault)
+            {
+                targetImage.sprite = defaultSprite;
+                targetImage.enabled = (defaultSprite != null);
+            }
+            else
+            {
+                targetImage.sprite = null;
+                targetImage.enabled = false;
+            }
+            return;
+        }
+
+        ItemData itemData = DataBaseManager.instance.GetItemDataById(itemId);
+
+        if (itemData == null || itemData.avatarSprite == null)
+        {
+            if (useDefault)
+            {
+                targetImage.sprite = defaultSprite;
+                targetImage.enabled = (defaultSprite != null);
+            }
+            else
+            {
+                targetImage.sprite = null;
+                targetImage.enabled = false;
+            }
+            return;
+        }
+
+        targetImage.sprite = itemData.avatarSprite;
+        targetImage.enabled = true;
     }
 
 }
