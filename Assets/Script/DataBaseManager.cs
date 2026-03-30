@@ -11,8 +11,6 @@ public class DataBaseManager : MonoBehaviour
     public DiceDataSO diceDataSO;
     public ItemDataSO itemDataSO;
 
-    [SerializeField]
-    private List<ItemDataSO> itemDataSOList = new List<ItemDataSO>();
 
     private void Awake()
     {
@@ -27,8 +25,8 @@ public class DataBaseManager : MonoBehaviour
         }
     }
 
-    public ItemDataSO GetItemDataById(int itemId)
+    public ItemData GetItemDataById(int itemId)
     {
-        return itemDataSOList.Find(x => x.itemId == itemId);
+        return itemDataSO.itemDatasList.Find(x => x.itemId == itemId);
     }
 }

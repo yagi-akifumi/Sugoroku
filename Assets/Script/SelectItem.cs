@@ -14,4 +14,10 @@ public class SelectItem : MonoBehaviour
 
     [SerializeField]
     private Text txtItemCount;
+
+    public void SetItemData(ItemData itemData, int itemCount)
+    {
+        txtItemName.text = itemData.itemName;
+        txtItemCount.text = "×" + itemCount;
+    }
 }

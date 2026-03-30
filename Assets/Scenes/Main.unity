@@ -1975,10 +1975,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diceDataSO: {fileID: 11400000, guid: 4f4b8fb93ab954f4fad357b51b12b5d0, type: 2}
   itemDataSO: {fileID: 11400000, guid: 17f93830ba87f43de9339240bcbabfdb, type: 2}
-  itemDataSOList:
-  - {fileID: 11400000, guid: 17f93830ba87f43de9339240bcbabfdb, type: 2}
-  - {fileID: 11400000, guid: 17f93830ba87f43de9339240bcbabfdb, type: 2}
-  - {fileID: 11400000, guid: 17f93830ba87f43de9339240bcbabfdb, type: 2}
 --- !u!1001 &928590905
 PrefabInstance:
   m_ObjectHideFlags: 0

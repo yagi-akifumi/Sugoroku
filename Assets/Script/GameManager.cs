@@ -166,6 +166,7 @@ public class GameManager : MonoBehaviour
         uiManager.InitializeDice();
 
         Debug.Log("ゲームデータを反映しました");
+        TestBuy();
     }
 
     private void SyncToGameData()
@@ -183,5 +184,16 @@ public class GameManager : MonoBehaviour
         {
             player.transform.position = tiles[player.currentIndex].transform.position;
         }
+    }
+
+    //
+    void TestBuy()
+    {
+        GameData.instance.money = 500;
+
+        ItemData itemData = DataBaseManager.instance.GetItemDataById(1);
+        bool result = GameData.instance.BuyItem(itemData);
+
+        Debug.Log("購入結果: " + result);
     }
 }

@@ -67,6 +67,7 @@ public class PlacementStatusPopUp : MonoBehaviour
     /// </summary>
     public void ShowPopUp()
     {
+        UpdateStatusView();
         // ポップアップの表示
         canvasGroup.DOFade(1.0f, 0.5f);
     }
@@ -79,5 +80,18 @@ public class PlacementStatusPopUp : MonoBehaviour
         // ポップアップの非表示
        
         canvasGroup.DOFade(0.0f, 0.5f).OnComplete(() => statusGenerator.InActivatePlacementStatusPopUp());
+    }
+
+    public void UpdateStatusView()
+    {
+        txtName.text = "Player";
+
+        txtStatusLife.text = GameData.instance.life.ToString();
+        txtStatusPower.text = GameData.instance.power.ToString();
+        txtStatusIntelligence.text = GameData.instance.intelligence.ToString();
+        txtStatusCoolness.text = GameData.instance.coolness.ToString();
+        txtStatusMorallity.text = GameData.instance.morality.ToString();
+        txtStatusKindness.text = GameData.instance.kindness.ToString();
+        txtStatusMoney.text = GameData.instance.money.ToString();
     }
 }

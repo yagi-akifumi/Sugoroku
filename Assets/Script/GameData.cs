@@ -148,8 +148,9 @@ public class GameData : MonoBehaviour
         return item.itemCount;
     }
 
-    public bool BuyItem(ItemDataSO itemData)
+    public bool BuyItem(ItemData itemData)
     {
+
         if (money < itemData.itemPrice)
         {
             Debug.Log("お金が足りない");
