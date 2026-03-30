@@ -6,7 +6,7 @@ using System.Linq;
 
 public class GameData : MonoBehaviour
 {
-    public static GameData instance;        // シングルトンデザインパターンのクラスにするための変数
+    public static GameData instance;
 
     [Header("セーブデータの有無")]
     public bool isSaveData;
@@ -29,11 +29,19 @@ public class GameData : MonoBehaviour
     public int kindness = 0;
     public int money = 0;
 
+    // ===== 装備 =====
+    public int equippedHeadId = -1;
+    public int equippedBodyId = -1;
+    public int equippedLegsId = -1;
+    public int equippedAccessoryId = -1;
+
+
+
     [System.Serializable]
     public class ItemInventoryData
     {
-        public int itemCount;            // 所持数
-        public int itemId;           // 所持している通し番号
+        public int itemCount;   // 所持数
+        public int itemId;      // アイテムID
     }
 
     [Header("所持アイテムのリスト")]
@@ -52,9 +60,17 @@ public class GameData : MonoBehaviour
         morality = 0;
         kindness = 0;
         money = 0;
+
+        equippedHeadId = -1;
+        equippedBodyId = -1;
+        equippedLegsId = -1;
+        equippedAccessoryId = -1;
+
+
+        itemInventoryDatasList.Clear();
     }
 
-    void Awake()
+    private void Awake()
     {
         if (instance == null)
         {
@@ -69,22 +85,17 @@ public class GameData : MonoBehaviour
 
     public void AddItem(int itemId)
     {
-        // すでに持ってるか探す
-        ItemInventoryData item = itemInventoryDatasList
-            .Find(x => x.itemId == itemId);
+        ItemInventoryData item = itemInventoryDatasList.Find(x => x.itemId == itemId);
 
         if (item != null)
         {
-            // 持ってたら数を増やす
             item.itemCount++;
         }
         else
         {
-            // 持ってなかったら新しく追加
             ItemInventoryData newItem = new ItemInventoryData();
             newItem.itemId = itemId;
             newItem.itemCount = 1;
-
             itemInventoryDatasList.Add(newItem);
         }
 
@@ -93,9 +104,7 @@ public class GameData : MonoBehaviour
 
     public bool UseItem(int itemId)
     {
-        // 持ってるか探す
-        ItemInventoryData item = itemInventoryDatasList
-            .Find(x => x.itemId == itemId);
+        ItemInventoryData item = itemInventoryDatasList.Find(x => x.itemId == itemId);
 
         if (item == null)
         {
@@ -109,10 +118,8 @@ public class GameData : MonoBehaviour
             return false;
         }
 
-        // 1個減らす
         item.itemCount--;
 
-        // 0になったらリストから削除
         if (item.itemCount == 0)
         {
             itemInventoryDatasList.Remove(item);
@@ -124,8 +131,7 @@ public class GameData : MonoBehaviour
 
     public bool HasItem(int itemId)
     {
-        ItemInventoryData item = itemInventoryDatasList
-            .Find(x => x.itemId == itemId);
+        ItemInventoryData item = itemInventoryDatasList.Find(x => x.itemId == itemId);
 
         if (item == null)
         {
@@ -137,8 +143,7 @@ public class GameData : MonoBehaviour
 
     public int GetItemCount(int itemId)
     {
-        ItemInventoryData item = itemInventoryDatasList
-            .Find(x => x.itemId == itemId);
+        ItemInventoryData item = itemInventoryDatasList.Find(x => x.itemId == itemId);
 
         if (item == null)
         {
@@ -150,7 +155,6 @@ public class GameData : MonoBehaviour
 
     public bool BuyItem(ItemData itemData)
     {
-
         if (money < itemData.itemPrice)
         {
             Debug.Log("お金が足りない");
@@ -163,4 +167,262 @@ public class GameData : MonoBehaviour
         Debug.Log("購入成功: " + itemData.itemId);
         return true;
     }
+
+    public bool EquipItem(int itemId)
+    {
+        if (!HasItem(itemId))
+        {
+            Debug.Log("そのアイテムを持っていません");
+            return false;
+        }
+
+        ItemData itemData = DataBaseManager.instance.GetItemDataById(itemId);
+
+        if (itemData == null)
+        {
+            Debug.LogError("itemDataが見つかりません");
+            return false;
+        }
+
+        if (itemData.itemType != ItemType.Equipment)
+        {
+            Debug.Log("装備アイテムではありません");
+            return false;
+        }
+
+        switch (itemData.equipmentType)
+        {
+            case EquipmentType.Head:
+                equippedHeadId = itemId;
+                break;
+
+            case EquipmentType.Body:
+                equippedBodyId = itemId;
+                break;
+
+            case EquipmentType.Legs:
+                equippedLegsId = itemId;
+                break;
+
+            case EquipmentType.Accessory:
+                equippedAccessoryId = itemId;
+                break;
+
+            default:
+                Debug.Log("装備部位が不正です");
+                return false;
+        }
+
+        Debug.Log("装備成功: " + itemData.itemName);
+        return true;
+    }
+
+    public bool UnEquipItem(int itemId)
+    {
+        if (equippedHeadId == itemId)
+        {
+            equippedHeadId = -1;
+            return true;
+        }
+
+        if (equippedBodyId == itemId)
+        {
+            equippedBodyId = -1;
+            return true;
+        }
+
+        if (equippedLegsId == itemId)
+        {
+            equippedLegsId = -1;
+            return true;
+        }
+
+        if (equippedAccessoryId == itemId)
+        {
+            equippedAccessoryId = -1;
+            return true;
+        }
+
+        Debug.Log("装備されていないアイテムです");
+        return false;
+    }
+
+    public bool IsEquipped(int itemId)
+    {
+        return equippedHeadId == itemId
+            || equippedBodyId == itemId
+            || equippedLegsId == itemId
+            || equippedAccessoryId == itemId;
+    }
+
+    
+
+    public int GetTotalLife()
+    {
+        return life + GetEquipmentLifeBonus();
+    }
+
+    public int GetTotalPower()
+    {
+        return power + GetEquipmentPowerBonus();
+    }
+
+    public int GetTotalIntelligence()
+    {
+        return intelligence + GetEquipmentIntelligenceBonus();
+    }
+
+    public int GetTotalCoolness()
+    {
+        return coolness + GetEquipmentCoolnessBonus();
+    }
+
+    public int GetTotalMorality()
+    {
+        return morality + GetEquipmentMoralityBonus();
+    }
+
+    public int GetTotalKindness()
+    {
+        return kindness + GetEquipmentKindnessBonus();
+    }
+
+    private int GetEquipmentPowerBonus()
+    {
+        int total = 0;
+
+        total += GetItemPower(equippedHeadId);
+        total += GetItemPower(equippedBodyId);
+        total += GetItemPower(equippedLegsId);
+        total += GetItemPower(equippedAccessoryId);
+
+        return total;
+    }
+
+    private int GetEquipmentLifeBonus()
+    {
+        int total = 0;
+
+        total += GetItemLife(equippedHeadId);
+        total += GetItemLife(equippedBodyId);
+        total += GetItemLife(equippedLegsId);
+        total += GetItemLife(equippedAccessoryId);
+
+        return total;
+    }
+
+    private int GetEquipmentIntelligenceBonus()
+    {
+        int total = 0;
+
+        total += GetItemIntelligence(equippedHeadId);
+        total += GetItemIntelligence(equippedBodyId);
+        total += GetItemIntelligence(equippedLegsId);
+        total += GetItemIntelligence(equippedAccessoryId);
+
+        return total;
+    }
+
+    private int GetEquipmentCoolnessBonus()
+    {
+        int total = 0;
+
+        total += GetItemCoolness(equippedHeadId);
+        total += GetItemCoolness(equippedBodyId);
+        total += GetItemCoolness(equippedLegsId);
+        total += GetItemCoolness(equippedAccessoryId);
+
+        return total;
+    }
+
+    private int GetEquipmentMoralityBonus()
+    {
+        int total = 0;
+
+        total += GetItemMorality(equippedHeadId);
+        total += GetItemMorality(equippedBodyId);
+        total += GetItemMorality(equippedLegsId);
+        total += GetItemMorality(equippedAccessoryId);
+
+        return total;
+    }
+
+    private int GetEquipmentKindnessBonus()
+    {
+        int total = 0;
+
+        total += GetItemKindness(equippedHeadId);
+        total += GetItemKindness(equippedBodyId);
+        total += GetItemKindness(equippedLegsId);
+        total += GetItemKindness(equippedAccessoryId);
+
+        return total;
+    }
+
+    private int GetItemPower(int itemId)
+    {
+        if (itemId < 0) return 0;
+
+        ItemData itemData = DataBaseManager.instance.GetItemDataById(itemId);
+
+        if (itemData == null) return 0;
+
+        return itemData.power;
+    }
+
+    private int GetItemLife(int itemId)
+    {
+        if (itemId < 0) return 0;
+
+        ItemData itemData = DataBaseManager.instance.GetItemDataById(itemId);
+
+        if (itemData == null) return 0;
+
+        return itemData.life;
+    }
+
+    private int GetItemIntelligence(int itemId)
+    {
+        if (itemId < 0) return 0;
+
+        ItemData itemData = DataBaseManager.instance.GetItemDataById(itemId);
+
+        if (itemData == null) return 0;
+
+        return itemData.intelligence;
+    }
+
+    private int GetItemCoolness(int itemId)
+    {
+        if (itemId < 0) return 0;
+
+        ItemData itemData = DataBaseManager.instance.GetItemDataById(itemId);
+
+        if (itemData == null) return 0;
+
+        return itemData.coolness;
+    }
+
+    private int GetItemMorality(int itemId)
+    {
+        if (itemId < 0) return 0;
+
+        ItemData itemData = DataBaseManager.instance.GetItemDataById(itemId);
+
+        if (itemData == null) return 0;
+
+        return itemData.morality;
+    }
+
+    private int GetItemKindness(int itemId)
+    {
+        if (itemId < 0) return 0;
+
+        ItemData itemData = DataBaseManager.instance.GetItemDataById(itemId);
+
+        if (itemData == null) return 0;
+
+        return itemData.kindness;
+    }
+
 }

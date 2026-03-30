@@ -18,13 +18,76 @@ MonoBehaviour:
     itemPrice: 100
     itemType: 0
     description: 
+    equipmentType: 0
+    power: 0
+    life: 0
+    intelligence: 0
+    coolness: 0
+    morality: 0
+    kindness: 0
+    money: 0
   - itemId: 2
     itemName: "\u304A\u306B\u304E\u308A"
     itemPrice: 200
     itemType: 0
     description: 
+    equipmentType: 0
+    power: 0
+    life: 0
+    intelligence: 0
+    coolness: 0
+    morality: 0
+    kindness: 0
+    money: 0
   - itemId: 3
     itemName: "\u30AD\u30E3\u30E9\u30E1\u30EB"
     itemPrice: 500
     itemType: 0
     description: 
+    equipmentType: 0
+    power: 0
+    life: 0
+    intelligence: 0
+    coolness: 0
+    morality: 0
+    kindness: 0
+    money: 0
+  - itemId: 3
+    itemName: "\u30AD\u30E3\u30E9\u30E1\u30EB"
+    itemPrice: 500
+    itemType: 0
+    description: 
+    equipmentType: 0
+    power: 0
+    life: 0
+    intelligence: 0
+    coolness: 0
+    morality: 0
+    kindness: 0
+    money: 0
+  - itemId: 4
+    itemName: "\u5E3D\u5B50"
+    itemPrice: 500
+    itemType: 1
+    description: 
+    equipmentType: 1
+    power: 4
+    life: 0
+    intelligence: 0
+    coolness: 0
+    morality: 0
+    kindness: 0
+    money: 0
+  - itemId: 5
+    itemName: "T\u30B7\u30E3\u30C4"
+    itemPrice: 500
+    itemType: 1
+    description: 
+    equipmentType: 2
+    power: 4
+    life: 0
+    intelligence: 10
+    coolness: 0
+    morality: 0
+    kindness: 0
+    money: 0

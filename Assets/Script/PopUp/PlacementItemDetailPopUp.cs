@@ -62,7 +62,16 @@ public class PlacementItemDetailPopUp : MonoBehaviour
 
         if (currentItemData.itemType == ItemType.Equipment)
         {
-            txtItemDetail.text = "装備しますか？";
+            bool isEquipped = GameData.instance.IsEquipped(currentItemData.itemId);
+
+            if (isEquipped)
+            {
+                txtItemDetail.text = "装備を外しますか？";
+            }
+            else
+            {
+                txtItemDetail.text = "装備しますか？";
+            }
         }
         else if (currentItemData.itemType == ItemType.Consumable)
         {
@@ -97,22 +106,33 @@ public class PlacementItemDetailPopUp : MonoBehaviour
 
     private void OnClickYes()
     {
-        if(currentItemData==null)
+        if (currentItemData == null)
         {
             return;
         }
-        if(currentItemData.itemType==ItemType.Consumable)
+
+        if (currentItemData.itemType == ItemType.Consumable)
         {
             UseCurrentItem();
         }
-        else if(currentItemData.itemType == ItemType.Equipment)
+        else if (currentItemData.itemType == ItemType.Equipment)
         {
-            EquipCurrentItem();
+            bool isEquipped = GameData.instance.IsEquipped(currentItemData.itemId);
+
+            if (isEquipped)
+            {
+                UnEquipCurrentItem();
+            }
+            else
+            {
+                EquipCurrentItem();
+            }
         }
-        else if(currentItemData.itemType==ItemType.EventItem)
+        else if (currentItemData.itemType == ItemType.EventItem)
         {
             Debug.Log("イベントアイテムです");
         }
+
         itemListGenerator.UpdateItemListPopUp();
         HidePopUp();
     }
@@ -138,9 +158,29 @@ public class PlacementItemDetailPopUp : MonoBehaviour
 
     private void EquipCurrentItem()
     {
-        Debug.Log("装備処理: " + currentItemData.itemName);
+        bool result = GameData.instance.EquipItem(currentItemData.itemId);
 
-        // 今は仮
-        // 後で GameData.instance.equippedItemId = currentItemData.itemId;
+        if (result)
+        {
+            Debug.Log("装備しました: " + currentItemData.itemName);
+        }
+        else
+        {
+            Debug.Log("装備できませんでした: " + currentItemData.itemName);
+        }
+    }
+
+    private void UnEquipCurrentItem()
+    {
+        bool result = GameData.instance.UnEquipItem(currentItemData.itemId);
+
+        if (result)
+        {
+            Debug.Log("装備を外しました: " + currentItemData.itemName);
+        }
+        else
+        {
+            Debug.Log("装備を外せませんでした");
+        }
     }
 }

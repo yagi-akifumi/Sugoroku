@@ -21,7 +21,7 @@ public class SelectItem : MonoBehaviour
 
     private ItemListGenerator itemListGenerator;
 
-    public void SetItemData(ItemData itemData, int itemCount, ItemListGenerator itemListGenerator)
+    public void SetItemData(ItemData itemData, int itemCount, ItemListGenerator itemListGenerator, bool isEquipped)
     {
         currentItemData = itemData;
         this.itemListGenerator = itemListGenerator;
@@ -29,8 +29,7 @@ public class SelectItem : MonoBehaviour
         txtItemName.text = itemData.itemName;
         txtItemCount.text = "×" + itemCount;
 
-        // ★ここ追加
-        if (itemData.itemType == ItemType.Equipment)
+        if (isEquipped)
         {
             txtItemEquipment.text = "E";
         }

@@ -90,7 +90,8 @@ public class PlacementItemListPopUp : MonoBehaviour
 
             if (itemData != null)
             {
-                newSelectItem.SetItemData(itemData, inventoryData.itemCount, itemListGenerator);
+                bool isEquipped = GameData.instance.IsEquipped(itemData.itemId);
+                newSelectItem.SetItemData(itemData, inventoryData.itemCount, itemListGenerator, isEquipped);
                 selectItemsList.Add(newSelectItem);
             }
         }

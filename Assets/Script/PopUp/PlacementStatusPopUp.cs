@@ -85,12 +85,12 @@ public class PlacementStatusPopUp : MonoBehaviour
     {
         txtName.text = "Player";
 
-        txtStatusLife.text = GameData.instance.life.ToString();
-        txtStatusPower.text = GameData.instance.power.ToString();
-        txtStatusIntelligence.text = GameData.instance.intelligence.ToString();
-        txtStatusCoolness.text = GameData.instance.coolness.ToString();
-        txtStatusMorallity.text = GameData.instance.morality.ToString();
-        txtStatusKindness.text = GameData.instance.kindness.ToString();
+        txtStatusLife.text = GameData.instance.GetTotalLife().ToString();
+        txtStatusPower.text = GameData.instance.GetTotalPower().ToString();
+        txtStatusIntelligence.text = GameData.instance.GetTotalIntelligence().ToString();
+        txtStatusCoolness.text = GameData.instance.GetTotalCoolness().ToString();
+        txtStatusMorallity.text = GameData.instance.GetTotalMorality().ToString();
+        txtStatusKindness.text = GameData.instance.GetTotalKindness().ToString();
         txtStatusMoney.text = GameData.instance.money.ToString();
     }
 }
