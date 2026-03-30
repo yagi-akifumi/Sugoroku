@@ -67,7 +67,6 @@ public class PlacementItemListPopUp : MonoBehaviour
     public void HidePopUp()
     {
         // ポップアップの非表示
-        Debug.Log("閉じるボタン実装");
         canvasGroup.DOFade(0.0f, 0.5f).OnComplete(() => itemListGenerator.InActivatePlacementItemListPopUp());
     }
 
@@ -75,7 +74,7 @@ public class PlacementItemListPopUp : MonoBehaviour
     /// アイテムリストの更新
     /// </summary>
 
-    private void UpdateItemList()
+    public void UpdateItemList()
     {
         foreach (SelectItem item in selectItemsList)
         {

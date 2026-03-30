@@ -46,7 +46,6 @@ public class PlacementStatusPopUp : MonoBehaviour
         SwitchActivateButtons(false);
 
         // 各ボタンにスクリプトの設定
-        Debug.Log("閉じるボタン設定");
         btnClose.onClick.AddListener(HidePopUp);
 
         // 各ボタンを押せる状態にする

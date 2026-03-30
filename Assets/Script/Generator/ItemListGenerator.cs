@@ -71,4 +71,9 @@ public class ItemListGenerator : MonoBehaviour
     {
         placementItemDetailPopUp.gameObject.SetActive(false);
     }
+
+    public void UpdateItemListPopUp()
+    {
+        placementItemListPopUp.UpdateItemList();
+    }
 }
