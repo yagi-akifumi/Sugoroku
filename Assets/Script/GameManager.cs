@@ -122,9 +122,22 @@ public class GameManager : MonoBehaviour
         saveData.kindness = GameData.instance.kindness;
         saveData.money = GameData.instance.money;
 
+        saveData.itemInventoryDatasList.Clear();
+
+        foreach (GameData.ItemInventoryData item in GameData.instance.itemInventoryDatasList)
+        {
+            SaveData.SaveItemInventoryData saveItem = new SaveData.SaveItemInventoryData();
+            saveItem.itemId = item.itemId;
+            saveItem.itemCount = item.itemCount;
+
+            saveData.itemInventoryDatasList.Add(saveItem);
+        }
 
         SaveManager.Save(saveData);
     }
+
+
+    
 
     public void LoadGame()
     {
@@ -155,6 +168,16 @@ public class GameManager : MonoBehaviour
         GameData.instance.kindness = saveData.kindness;
         GameData.instance.money = saveData.money;
 
+        GameData.instance.itemInventoryDatasList.Clear();
+
+        foreach (SaveData.SaveItemInventoryData saveItem in saveData.itemInventoryDatasList)
+        {
+            GameData.ItemInventoryData item = new GameData.ItemInventoryData();
+            item.itemId = saveItem.itemId;
+            item.itemCount = saveItem.itemCount;
+
+            GameData.instance.itemInventoryDatasList.Add(item);
+        }
 
         ApplyFromGameData();
 
@@ -166,7 +189,6 @@ public class GameManager : MonoBehaviour
         uiManager.InitializeDice();
 
         Debug.Log("ゲームデータを反映しました");
-        TestBuy();
     }
 
     private void SyncToGameData()
@@ -184,16 +206,5 @@ public class GameManager : MonoBehaviour
         {
             player.transform.position = tiles[player.currentIndex].transform.position;
         }
-    }
-
-    //
-    void TestBuy()
-    {
-        GameData.instance.money = 500;
-
-        ItemData itemData = DataBaseManager.instance.GetItemDataById(1);
-        bool result = GameData.instance.BuyItem(itemData);
-
-        Debug.Log("購入結果: " + result);
     }
 }

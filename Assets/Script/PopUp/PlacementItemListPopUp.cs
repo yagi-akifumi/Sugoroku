@@ -19,6 +19,9 @@ public class PlacementItemListPopUp : MonoBehaviour
 
     private ItemListGenerator itemListGenerator;
 
+    [SerializeField]
+    private Transform itemListParent;
+
     [SerializeField, Header("キャンバス")]
     private CanvasGroup canvasGroup;
 
@@ -54,10 +57,11 @@ public class PlacementItemListPopUp : MonoBehaviour
     public void ShowPopUp()
     {
         // ポップアップの表示
+        UpdateItemList();
         canvasGroup.DOFade(1.0f, 0.5f);
     }
 
-    // <summary>
+    /// <summary>
     /// ポップアップの非表示
     /// </summary>
     public void HidePopUp()
@@ -66,4 +70,32 @@ public class PlacementItemListPopUp : MonoBehaviour
         Debug.Log("閉じるボタン実装");
         canvasGroup.DOFade(0.0f, 0.5f).OnComplete(() => itemListGenerator.InActivatePlacementItemListPopUp());
     }
+
+    /// <summary>
+    /// アイテムリストの更新
+    /// </summary>
+
+    private void UpdateItemList()
+    {
+        foreach (SelectItem item in selectItemsList)
+        {
+            Destroy(item.gameObject);
+        }
+        selectItemsList.Clear();
+
+        foreach (GameData.ItemInventoryData inventoryData in GameData.instance.itemInventoryDatasList)
+        {
+            SelectItem newSelectItem = Instantiate(selectItemPrefab, itemListParent);
+
+            ItemData itemData = DataBaseManager.instance.GetItemDataById(inventoryData.itemId);
+
+            if (itemData != null)
+            {
+                newSelectItem.SetItemData(itemData, inventoryData.itemCount, itemListGenerator);
+                selectItemsList.Add(newSelectItem);
+            }
+        }
+        Debug.Log("アイテムアップデート実装完了");
+    }
+
 }

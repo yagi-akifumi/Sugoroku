@@ -3583,6 +3583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementItemListPopUpPrefab: {fileID: 1108179009232722980, guid: 5f00e07ce562e46cc88252366ba6e6ed, type: 3}
+  placementItemDetailPopUpPrefab: {fileID: 3264454920473272368, guid: 0a3bc66553f6044b393b276062e7f7c4, type: 3}
   canvasTran: {fileID: 674153917}
   mainCanvas: {fileID: 0}
 --- !u!1 &1839714457

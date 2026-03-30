@@ -8,39 +8,37 @@ public class ItemListGenerator : MonoBehaviour
     private PlacementItemListPopUp placementItemListPopUpPrefab;
     private PlacementItemListPopUp placementItemListPopUp;
 
+    [SerializeField, Header("アイテムデタイルPrefab")]
+    private PlacementItemDetailPopUp placementItemDetailPopUpPrefab;
+    private PlacementItemDetailPopUp placementItemDetailPopUp;
+
     [SerializeField, Header("キャンバス")]
     private Transform canvasTran;
-
-    public CanvasGroup mainCanvas;
 
     public void SetUpItemListGenerator()
     {
         CreatePlacementItemListPopUp();
+        CreatePlacementItemDetailPopUp();
     }
-
 
     private void CreatePlacementItemListPopUp()
     {
-        // ポップアップを生成
         placementItemListPopUp = Instantiate(placementItemListPopUpPrefab, canvasTran, false);
-
-        // ポップアップの設定
         placementItemListPopUp.SetUpPlacementItemListPopUp(this);
-
-        // ポップアップを非表示にする
         placementItemListPopUp.gameObject.SetActive(false);
     }
 
-    /// <summary>
-    /// ステータスの表示
-    /// </summary>
+    private void CreatePlacementItemDetailPopUp()
+    {
+        placementItemDetailPopUp = Instantiate(placementItemDetailPopUpPrefab, canvasTran, false);
+        placementItemDetailPopUp.SetUpPlacementItemDetailPopUp(this);
+        placementItemDetailPopUp.gameObject.SetActive(false);
+    }
+
     public void ActivatePlacementItemListPopUp()
     {
-
-        // placementStatusPopUpがnullではないことを確認
         if (placementItemListPopUp != null)
         {
-            // アイテムのポップアップの表示
             placementItemListPopUp.gameObject.SetActive(true);
             placementItemListPopUp.ShowPopUp();
         }
@@ -50,12 +48,27 @@ public class ItemListGenerator : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// アイテムリストの非表示
-    /// </summary>
+    public void ActivatePlacementItemDetailPopUp(ItemData itemData)
+    {
+        if (placementItemDetailPopUp != null)
+        {
+            placementItemDetailPopUp.gameObject.SetActive(true);
+            placementItemDetailPopUp.SetItemData(itemData);
+            placementItemDetailPopUp.ShowPopUp();
+        }
+        else
+        {
+            Debug.LogError("placementItemDetailPopUpがnullです。");
+        }
+    }
+
     public void InActivatePlacementItemListPopUp()
     {
-        Debug.Log("非表示にするよ");
         placementItemListPopUp.gameObject.SetActive(false);
+    }
+
+    public void InActivatePlacementItemDetailPopUp()
+    {
+        placementItemDetailPopUp.gameObject.SetActive(false);
     }
 }

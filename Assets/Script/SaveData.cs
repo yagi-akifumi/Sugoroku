@@ -21,4 +21,14 @@ public class SaveData : object
     public int kindness;
     public int money;
 
+
+    [Serializable]
+    public class SaveItemInventoryData
+    {
+        public int itemId;
+        public int itemCount;
+    }
+
+    public List<SaveItemInventoryData> itemInventoryDatasList = new List<SaveItemInventoryData>();
+
 }

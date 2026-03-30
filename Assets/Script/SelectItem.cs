@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 
 public class SelectItem : MonoBehaviour
 {
@@ -10,14 +9,49 @@ public class SelectItem : MonoBehaviour
     private Button btnSelectItem;
 
     [SerializeField]
+    private Text txtItemEquipment;
+
+    [SerializeField]
     private Text txtItemName;
 
     [SerializeField]
     private Text txtItemCount;
 
-    public void SetItemData(ItemData itemData, int itemCount)
+    private ItemData currentItemData;
+
+    private ItemListGenerator itemListGenerator;
+
+    public void SetItemData(ItemData itemData, int itemCount, ItemListGenerator itemListGenerator)
     {
+        currentItemData = itemData;
+        this.itemListGenerator = itemListGenerator;
+
         txtItemName.text = itemData.itemName;
         txtItemCount.text = "×" + itemCount;
+
+        // ★ここ追加
+        if (itemData.itemType == ItemType.Equipment)
+        {
+            txtItemEquipment.text = "E";
+        }
+        else
+        {
+            txtItemEquipment.text = "";
+        }
+
+        btnSelectItem.onClick.RemoveAllListeners();
+        btnSelectItem.onClick.AddListener(OnClickItem);
+    }
+
+    private void OnClickItem()
+    {
+        if (currentItemData == null)
+        {
+            Debug.LogError("currentItemDataがありません");
+            return;
+        }
+
+        itemListGenerator.ActivatePlacementItemDetailPopUp(currentItemData);
     }
 }
+
