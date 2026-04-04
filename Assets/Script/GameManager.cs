@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private StatusGenerator statusGenerator;
     [SerializeField]
-    private ItemListGenerator itemListGenerator;
+    private ItemGenerator itemListGenerator;
 
 
 

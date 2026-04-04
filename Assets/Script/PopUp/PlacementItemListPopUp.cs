@@ -34,7 +34,7 @@ public class PlacementItemListPopUp : MonoBehaviour
     [SerializeField] private Sprite defaultBody;
     [SerializeField] private Sprite defaultLegs;
 
-    private ItemListGenerator itemListGenerator;
+    private ItemGenerator itemListGenerator;
 
     [SerializeField]
     private Transform itemListParent;
@@ -42,7 +42,7 @@ public class PlacementItemListPopUp : MonoBehaviour
     [SerializeField, Header("キャンバス")]
     private CanvasGroup canvasGroup;
 
-    public void SetUpPlacementItemListPopUp(ItemListGenerator itemListGenerator)
+    public void SetUpPlacementItemListPopUp(ItemGenerator itemListGenerator)
     {
         this.itemListGenerator = itemListGenerator;
 

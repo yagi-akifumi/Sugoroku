@@ -21,9 +21,9 @@ public class PlacementItemDetailPopUp : MonoBehaviour
     [SerializeField, Header("キャンバス")]
     private CanvasGroup canvasGroup;
 
-    private ItemListGenerator itemListGenerator;
+    private ItemGenerator itemListGenerator;
 
-    public void SetUpPlacementItemDetailPopUp(ItemListGenerator itemListGenerator)
+    public void SetUpPlacementItemDetailPopUp(ItemGenerator itemListGenerator)
     {
         this.itemListGenerator = itemListGenerator;
 

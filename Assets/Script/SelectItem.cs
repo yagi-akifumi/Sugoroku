@@ -19,12 +19,12 @@ public class SelectItem : MonoBehaviour
 
     private ItemData currentItemData;
 
-    private ItemListGenerator itemListGenerator;
+    private ItemGenerator itemGenerator;
 
-    public void SetItemData(ItemData itemData, int itemCount, ItemListGenerator itemListGenerator, bool isEquipped)
+    public void SetItemData(ItemData itemData, int itemCount, ItemGenerator itemGenerator, bool isEquipped)
     {
         currentItemData = itemData;
-        this.itemListGenerator = itemListGenerator;
+        this.itemGenerator = itemGenerator;
 
         txtItemName.text = itemData.itemName;
         txtItemCount.text = "×" + itemCount;
@@ -50,7 +50,7 @@ public class SelectItem : MonoBehaviour
             return;
         }
 
-        itemListGenerator.ActivatePlacementItemDetailPopUp(currentItemData);
+        itemGenerator.ActivatePlacementItemDetailPopUp(currentItemData);
     }
 }
 

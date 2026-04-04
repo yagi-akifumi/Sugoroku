@@ -17,13 +17,16 @@ public class UIManager : MonoBehaviour
     private Button btnItemList;
 
     [SerializeField]
+    private Button btnFriendList;
+
+    [SerializeField]
     private Text txtDiceTurn;
 
     [SerializeField]
     private StatusGenerator statusGenerator;
 
     [SerializeField]
-    private ItemListGenerator itemListGenerator;
+    private ItemGenerator itemListGenerator;
 
     [SerializeField]
     private DiceManager diceManager;

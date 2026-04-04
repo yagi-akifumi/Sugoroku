@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemListGenerator : MonoBehaviour
+public class ItemGenerator : MonoBehaviour
 {
     [SerializeField, Header("アイテムリストPrefab")]
     private PlacementItemListPopUp placementItemListPopUpPrefab;
