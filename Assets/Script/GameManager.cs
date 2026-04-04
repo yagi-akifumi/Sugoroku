@@ -24,7 +24,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private StatusGenerator statusGenerator;
     [SerializeField]
-    private ItemGenerator itemListGenerator;
+    private ItemGenerator itemGenerator;
+    [SerializeField]
+    private FriendGenerator friendGenerator;
+
+
 
 
 
@@ -32,7 +36,8 @@ public class GameManager : MonoBehaviour
     {
         uiManager.SetUpUIManager();
         statusGenerator.SetUpStatusGenerator();
-        itemListGenerator.SetUpItemListGenerator();
+        itemGenerator.SetUpItemListGenerator();
+        friendGenerator.SetUpFriendGenerator();
 
         if (SaveManager.HasSaveData())
         {

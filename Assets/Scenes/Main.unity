@@ -3499,7 +3499,8 @@ MonoBehaviour:
   maxTurn: 36
   currentState: 0
   statusGenerator: {fileID: 1518368282}
-  itemListGenerator: {fileID: 1832638780}
+  itemGenerator: {fileID: 1832638780}
+  friendGenerator: {fileID: 2066976091}
 --- !u!1 &1518368280
 GameObject:
   m_ObjectHideFlags: 0
@@ -4071,9 +4072,11 @@ MonoBehaviour:
   btnDice: {fileID: 1862230096}
   btnStatus: {fileID: 296196709}
   btnItemList: {fileID: 1168002408}
+  btnFriendList: {fileID: 686718200}
   txtDiceTurn: {fileID: 6975977414023457105}
   statusGenerator: {fileID: 1518368282}
-  itemListGenerator: {fileID: 1832638780}
+  itemGenerator: {fileID: 1832638780}
+  friendGenerator: {fileID: 2066976091}
   diceManager: {fileID: 1410256917}
 --- !u!4 &1611703312
 Transform:
@@ -4803,7 +4806,7 @@ GameObject:
   - component: {fileID: 2066976090}
   - component: {fileID: 2066976091}
   m_Layer: 0
-  m_Name: friendGenerator
+  m_Name: FriendGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4836,6 +4839,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9e2aa709512c475aaa1869a8c62aaf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placementFriendListPopUpPrefab: {fileID: 357645552620983008, guid: 5c686ddef5d174d8ba68cbf655fa3d43, type: 3}
+  canvasTran: {fileID: 674153917}
 --- !u!1 &2074961343
 GameObject:
   m_ObjectHideFlags: 0

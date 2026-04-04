@@ -26,7 +26,10 @@ public class UIManager : MonoBehaviour
     private StatusGenerator statusGenerator;
 
     [SerializeField]
-    private ItemGenerator itemListGenerator;
+    private ItemGenerator itemGenerator;
+
+    [SerializeField]
+    private FriendGenerator friendGenerator;
 
     [SerializeField]
     private DiceManager diceManager;
@@ -35,8 +38,8 @@ public class UIManager : MonoBehaviour
     {
         btnDice.onClick.AddListener(OnClickDice);
         btnStatus.onClick.AddListener(() => statusGenerator.ActivatePlacementStatusPopUp());
-        btnItemList.onClick.AddListener(() => itemListGenerator.ActivatePlacementItemListPopUp());
-
+        btnItemList.onClick.AddListener(() => itemGenerator.ActivatePlacementItemListPopUp());
+        btnFriendList.onClick.AddListener(() => friendGenerator.ActivatePlacementFriendListPopUp());
     }
 
 

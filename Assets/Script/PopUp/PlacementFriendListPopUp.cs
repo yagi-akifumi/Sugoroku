@@ -45,9 +45,18 @@ public class PlacementFriendListPopUp : MonoBehaviour
     /// <summary>
     /// ポップアップの非表示
     /// </summary>
+    public void ShowPopUp()
+    {
+        // ポップアップの非表示
+        canvasGroup.DOFade(1.0f, 0.5f);
+    }
+
+    /// <summary>
+    /// ポップアップの非表示
+    /// </summary>
     public void HidePopUp()
     {
         // ポップアップの非表示
-        canvasGroup.DOFade(0.0f, 0.5f);
-    } 
+        canvasGroup.DOFade(0.0f, 0.5f).OnComplete(() => friendGenerator.InActivatePlacementFriendListPopUp());
+    }
 }

@@ -2,15 +2,44 @@ using UnityEngine;
 
 public class FriendGenerator : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField, Header("フレンドリストPrefab")]
+    private PlacementFriendListPopUp placementFriendListPopUpPrefab;
+    private PlacementFriendListPopUp placementFriendListPopUp;
+
+    [SerializeField, Header("キャンバス")]
+    private Transform canvasTran;
+
+    public void SetUpFriendGenerator()
     {
-        
+        CreatePlacementFriendListPopUp();
+        //CreatePlacementFriendDetailPopUp();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void CreatePlacementFriendListPopUp()
     {
-        
+        placementFriendListPopUp = Instantiate(placementFriendListPopUpPrefab, canvasTran, false);
+        placementFriendListPopUp.SetUpPlacementFriendListPopUp();
+        placementFriendListPopUp.gameObject.SetActive(false);
     }
+
+    public void ActivatePlacementFriendListPopUp()
+    {
+        if (placementFriendListPopUp != null)
+        {
+            placementFriendListPopUp.gameObject.SetActive(true);
+            placementFriendListPopUp.ShowPopUp();
+        }
+        else
+        {
+            Debug.LogError("placementItemListPopUpがnullです。");
+        }
+    }
+
+    public void InActivatePlacementFriendListPopUp()
+    {
+        placementFriendListPopUp.gameObject.SetActive(false);
+    }
+
+
+
 }
