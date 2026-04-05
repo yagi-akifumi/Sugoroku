@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
         btnDice.onClick.AddListener(OnClickDice);
         btnStatus.onClick.AddListener(() => statusGenerator.ActivatePlacementStatusPopUp());
         btnItemList.onClick.AddListener(() => itemGenerator.ActivatePlacementItemListPopUp());
-        btnFriendList.onClick.AddListener(() => friendGenerator.ActivatePlacementFriendListPopUp());
+        btnFriendList.onClick.AddListener(OnClickFriendList);
     }
 
 
@@ -73,6 +73,21 @@ public class UIManager : MonoBehaviour
         }
 
         txtDiceTurn.text = calendarText;
+    }
+
+    private void OnClickFriendList()
+    {
+        List<int> friendNumList = new List<int>();
+
+        foreach (FriendData friendData in DataBaseManager.instance.friendDataSO.friendDatasList)
+        {
+            friendNumList.Add(friendData.friendNum);
+            Debug.Log("追加したfriendNum: " + friendData.friendNum + " / " + friendData.friendName);
+        }
+
+        Debug.Log("friendNumList合計: " + friendNumList.Count);
+
+        friendGenerator.ActivatePlacementFriendListPopUp(friendNumList);
     }
 
     public void SetDiceButtonInteractable(bool isActive)

@@ -1,24 +1,57 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SelectFriend : MonoBehaviour
 {
     [SerializeField]
-    private Button btnSelectFriendDetail;
-
-    [SerializeField]
-    private Image imgFriendFace;
+    private Button btnSelect;
 
     [SerializeField]
     private Text txtFriendName;
 
     [SerializeField]
-    private Text txtFriendLevel;
+    private Text txtFriendIntroduction;
 
-    private void OnClickFriendDetail()
+    [SerializeField]
+    private Image imgFriendPicture;
+
+    private FriendData currentFriendData;
+    private FriendGenerator friendGenerator;
+
+    public void SetFriendData(FriendData friendData, FriendGenerator friendGenerator)
     {
-        Debug.Log("友達ボタンを押した");
+        currentFriendData = friendData;
+        this.friendGenerator = friendGenerator;
+
+        if (currentFriendData == null)
+        {
+            Debug.LogError("currentFriendDataがありません");
+            return;
+        }
+
+        txtFriendName.text = currentFriendData.friendName;
+        txtFriendIntroduction.text = currentFriendData.friendIntroduction;
+        imgFriendPicture.sprite = currentFriendData.friendPicture;
+        imgFriendPicture.enabled = (currentFriendData.friendPicture != null);
+
+        btnSelect.onClick.RemoveAllListeners();
+        btnSelect.onClick.AddListener(OnClickFriend);
+    }
+
+    private void OnClickFriend()
+    {
+        if (currentFriendData == null)
+        {
+            Debug.LogError("currentFriendDataがありません");
+            return;
+        }
+
+        if (friendGenerator == null)
+        {
+            Debug.LogError("friendGeneratorがありません");
+            return;
+        }
+
+        friendGenerator.ActivatePlacementFriendDetailPopUp(currentFriendData.friendNum);
     }
 }

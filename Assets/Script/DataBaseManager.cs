@@ -11,6 +11,7 @@ public class DataBaseManager : MonoBehaviour
     public DiceDataSO diceDataSO;
     public ItemDataSO itemDataSO;
     public CalendarDataSO calendarDataSO;
+    public FriendDataSO friendDataSO;
 
 
 
@@ -47,5 +48,10 @@ public class DataBaseManager : MonoBehaviour
         }
 
         return data.calendarTxt;
+    }
+
+    public FriendData GetFriendDataById(int friendNum)
+    {
+        return friendDataSO.friendDatasList.Find(x => x.friendNum == friendNum);
     }
 }

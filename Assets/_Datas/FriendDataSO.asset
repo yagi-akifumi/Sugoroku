@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f1ffb1476404e43818024e3b314761, type: 3}
+  m_Name: FriendDataSO
+  m_EditorClassIdentifier: 
+  friendDatasList:
+  - friendNum: 0
+    friendName: "\u305F\u308D\u3046"
+    friendIntroduction: "\u305F\u308D\u3046\u304F\u3093\u306F\u5C0F\u5B66\u68212\u5E74\u751F\u3067\u3059\u3002"
+    friendPicture: {fileID: -2165808416186281336, guid: 65b442af56e1347d19cd868e152d9582, type: 3}
+  - friendNum: 1
+    friendName: "\u305F\u304B\u3057"
+    friendIntroduction: "\u305F\u304B\u3057\u304F\u3093\u306F\u5C0F\u5B66\u68214\u5E74\u751F\u3067\u3059\u3002"
+    friendPicture: {fileID: -418678913202170186, guid: fd7136cfb305b4bff94f4eb0e762a965, type: 3}
+  - friendNum: 2
+    friendName: "\u306F\u306A\u3053"
+    friendIntroduction: "\u306F\u306A\u3053\u3055\u3093\u306F\u5C0F\u5B66\u68216\u5E74\u751F\u3067\u3059\u3002"
+    friendPicture: {fileID: -5059547392018692610, guid: fed6d4ffbb8514d85af2a468110714fd, type: 3}

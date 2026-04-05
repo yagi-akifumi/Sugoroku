@@ -191,7 +191,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btnClose: {fileID: 7415318770742556304}
   selectFriendPrefab: {fileID: 7441289649499935186, guid: e13d9c21aeccf4b94a7ac2654dfcb881, type: 3}
-  canvasTran: {fileID: 8162358596208716705}
+  selectFriendList: []
+  canvasTran: {fileID: 8936524255582355152}
   canvasGroup: {fileID: 7455420854463779039}
 --- !u!1 &2250091341263519854
 GameObject:

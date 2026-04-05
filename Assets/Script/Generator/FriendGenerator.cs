@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class FriendGenerator : MonoBehaviour
 {
@@ -6,32 +7,66 @@ public class FriendGenerator : MonoBehaviour
     private PlacementFriendListPopUp placementFriendListPopUpPrefab;
     private PlacementFriendListPopUp placementFriendListPopUp;
 
+    [SerializeField, Header("フレンドリストPrefab")]
+    private PlacementFriendDetailPopUp placementFriendDetailPopUpPrefab;
+    private PlacementFriendDetailPopUp placementFriendDetailPopUp;
+
     [SerializeField, Header("キャンバス")]
     private Transform canvasTran;
 
     public void SetUpFriendGenerator()
     {
         CreatePlacementFriendListPopUp();
-        //CreatePlacementFriendDetailPopUp();
+        CreatePlacementFriendDetailPopUp();
     }
 
     private void CreatePlacementFriendListPopUp()
     {
         placementFriendListPopUp = Instantiate(placementFriendListPopUpPrefab, canvasTran, false);
-        placementFriendListPopUp.SetUpPlacementFriendListPopUp();
+        placementFriendListPopUp.SetUpPlacementFriendListPopUp(this);
         placementFriendListPopUp.gameObject.SetActive(false);
     }
 
-    public void ActivatePlacementFriendListPopUp()
+    private void CreatePlacementFriendDetailPopUp()
+    {
+        placementFriendDetailPopUp = Instantiate(placementFriendDetailPopUpPrefab, canvasTran, false);
+        placementFriendDetailPopUp.SetUpPlacementFriendDetailPopUp(this);
+        placementFriendDetailPopUp.gameObject.SetActive(false);
+    }
+
+    public void ActivatePlacementFriendListPopUp(List<int> friendNumList)
     {
         if (placementFriendListPopUp != null)
         {
             placementFriendListPopUp.gameObject.SetActive(true);
+            placementFriendListPopUp.SetFriendList(friendNumList);
             placementFriendListPopUp.ShowPopUp();
         }
         else
         {
-            Debug.LogError("placementItemListPopUpがnullです。");
+            Debug.LogError("placementFriendListPopUpがnullです。");
+        }
+    }
+
+    public void ActivatePlacementFriendDetailPopUp(int friendNum)
+    {
+        if (placementFriendDetailPopUp != null)
+        {
+            FriendData friendData = DataBaseManager.instance.GetFriendDataById(friendNum);
+
+            if (friendData == null)
+            {
+                Debug.LogError("friendDataがnullです。 friendNum: " + friendNum);
+                return;
+            }
+
+            placementFriendDetailPopUp.gameObject.SetActive(true);
+            placementFriendDetailPopUp.SetFriendData(friendData);
+            placementFriendDetailPopUp.ShowPopUp();
+        }
+        else
+        {
+            Debug.LogError("placementFriendDetailPopUpがnullです。");
         }
     }
 
@@ -40,6 +75,9 @@ public class FriendGenerator : MonoBehaviour
         placementFriendListPopUp.gameObject.SetActive(false);
     }
 
-
+    public void InActivatePlacementFriendDetailPopUp()
+    {
+        placementFriendDetailPopUp.gameObject.SetActive(false);
+    }
 
 }

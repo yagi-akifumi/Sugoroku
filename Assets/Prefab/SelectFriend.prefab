@@ -115,7 +115,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75, y: -75}
+  m_AnchoredPosition: {x: 50, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7294438825802338502
@@ -273,8 +273,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 35, y: -13}
+  m_SizeDelta: {x: 320, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7908162264167887698
 CanvasRenderer:
@@ -352,10 +352,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7abf18d763444265b701693aae789e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnSelectFriendDetail: {fileID: 3588518985688949450}
-  imgFriendFace: {fileID: 7576143375552984030}
+  btnSelect: {fileID: 3588518985688949450}
   txtFriendName: {fileID: 1385739802766032434}
-  txtFriendLevel: {fileID: 8348766799322751944}
+  txtFriendIntroduction: {fileID: 8348766799322751944}
+  imgFriendPicture: {fileID: 7576143375552984030}
 --- !u!1 &7732996165479401258
 GameObject:
   m_ObjectHideFlags: 0
