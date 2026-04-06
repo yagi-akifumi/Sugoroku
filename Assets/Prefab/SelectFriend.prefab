@@ -354,7 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btnSelect: {fileID: 3588518985688949450}
   txtFriendName: {fileID: 1385739802766032434}
-  txtFriendIntroduction: {fileID: 8348766799322751944}
+  txtFriendShip: {fileID: 8348766799322751944}
   imgFriendPicture: {fileID: 7576143375552984030}
 --- !u!1 &7732996165479401258
 GameObject:
@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 3575179694606624051}
   - component: {fileID: 8348766799322751944}
   m_Layer: 5
-  m_Name: txtFriendLevel
+  m_Name: txtFriendShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

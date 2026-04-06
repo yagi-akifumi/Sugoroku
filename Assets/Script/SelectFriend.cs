@@ -10,7 +10,7 @@ public class SelectFriend : MonoBehaviour
     private Text txtFriendName;
 
     [SerializeField]
-    private Text txtFriendIntroduction;
+    private Text txtFriendShip;
 
     [SerializeField]
     private Image imgFriendPicture;
@@ -30,7 +30,8 @@ public class SelectFriend : MonoBehaviour
         }
 
         txtFriendName.text = currentFriendData.friendName;
-        txtFriendIntroduction.text = currentFriendData.friendIntroduction;
+        int friendship = GameData.instance.GetFriendship(currentFriendData.friendNum);
+        txtFriendShip.text = friendship.ToString();
         imgFriendPicture.sprite = currentFriendData.friendPicture;
         imgFriendPicture.enabled = (currentFriendData.friendPicture != null);
 

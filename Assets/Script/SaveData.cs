@@ -31,4 +31,18 @@ public class SaveData : object
 
     public List<SaveItemInventoryData> itemInventoryDatasList = new List<SaveItemInventoryData>();
 
+    [System.Serializable]
+    public class SaveFriendShipData
+    {
+        public int friendNum;
+        public int friendShip;
+    }
+
+    public List<SaveFriendShipData> friendShipDatasList = new List<SaveFriendShipData>();
+
+    public int equippedHeadId;
+    public int equippedBodyId;
+    public int equippedLegsId;
+    public int equippedAccessoryId;
+
 }

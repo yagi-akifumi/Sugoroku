@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     private bool isMoving = false;
     public int currentTurn = 0;
-    public int maxTurn = 12;
+    public int maxTurn = 36;
 
     public GameState currentState = GameState.Idle;
 
@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        
         uiManager.SetUpUIManager();
         statusGenerator.SetUpStatusGenerator();
         itemGenerator.SetUpItemListGenerator();
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            GameData.instance.Init();
             SyncToGameData();
         }
     }
@@ -138,6 +140,17 @@ public class GameManager : MonoBehaviour
             saveData.itemInventoryDatasList.Add(saveItem);
         }
 
+        saveData.friendShipDatasList.Clear();
+
+        foreach (GameData.FriendShipData data in GameData.instance.friendShipDatasList)
+        {
+            SaveData.SaveFriendShipData saveDataItem = new SaveData.SaveFriendShipData();
+            saveDataItem.friendNum = data.friendNum;
+            saveDataItem.friendShip = data.friendShip;
+
+            saveData.friendShipDatasList.Add(saveDataItem);
+        }
+
         SaveManager.Save(saveData);
     }
 
@@ -184,6 +197,22 @@ public class GameManager : MonoBehaviour
             GameData.instance.itemInventoryDatasList.Add(item);
         }
 
+        GameData.instance.equippedHeadId = saveData.equippedHeadId;
+        GameData.instance.equippedBodyId = saveData.equippedBodyId;
+        GameData.instance.equippedLegsId = saveData.equippedLegsId;
+        GameData.instance.equippedAccessoryId = saveData.equippedAccessoryId;
+
+        GameData.instance.friendShipDatasList.Clear();
+
+        foreach (SaveData.SaveFriendShipData saveDataItem in saveData.friendShipDatasList)
+        {
+            GameData.FriendShipData data = new GameData.FriendShipData();
+            data.friendNum = saveDataItem.friendNum;
+            data.friendShip = saveDataItem.friendShip;
+
+            GameData.instance.friendShipDatasList.Add(data);
+        }
+
         ApplyFromGameData();
 
         player.SetIdleFront();
@@ -193,6 +222,7 @@ public class GameManager : MonoBehaviour
         uiManager.OnCountDiceTurn();
         uiManager.InitializeDice();
 
+        
         Debug.Log("ゲームデータを反映しました");
     }
 
