@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d9053a75362054598d72e1d8988bc8, type: 3}
   m_Name: Sugoroku.scenarios
   m_EditorClassIdentifier: 
-  importVersion: 0
-  chapters: []
+  importVersion: 3
+  chapters:
+  - {fileID: 11400000, guid: 63f3f894a1fa64edfa9bcf368143b961, type: 2}

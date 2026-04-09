@@ -47,17 +47,6 @@ public class GameData : MonoBehaviour
     [Header("所持アイテムのリスト")]
     public List<ItemInventoryData> itemInventoryDatasList = new List<ItemInventoryData>();
 
-    [System.Serializable]
-    public class FriendShipData
-    {
-        public int friendNum;      // 友達ID
-        public int friendShip;     // 友情度
-    }
-
-    [Header("友情リスト")]
-    public List<FriendShipData> friendShipDatasList = new List<FriendShipData>();
-
-
     // ===== 初期化 =====
     public void Init()
     {
@@ -79,26 +68,7 @@ public class GameData : MonoBehaviour
 
 
         itemInventoryDatasList.Clear();
-        InitFriendShipData();
-
-        Debug.Log("テスト");
     }
-
-    // ===== 友達リスト初期化 =====
-    public void InitFriendShipData()
-    {
-        friendShipDatasList.Clear();
-
-        foreach (FriendData friendData in DataBaseManager.instance.friendDataSO.friendDatasList)
-        {
-            FriendShipData newData = new FriendShipData();
-            newData.friendNum = friendData.friendNum;
-            newData.friendShip = 0;
-
-            friendShipDatasList.Add(newData);
-        }
-    }
-
 
     private void Awake()
     {
@@ -453,19 +423,6 @@ public class GameData : MonoBehaviour
         if (itemData == null) return 0;
 
         return itemData.kindness;
-    }
-
-    public int GetFriendship(int friendNum)
-    {
-        FriendShipData data = friendShipDatasList.Find(x => x.friendNum == friendNum);
-
-        if (data == null)
-        {
-            Debug.LogWarning("友情データなし: " + friendNum);
-            return 0;
-        }
-
-        return data.friendShip;
     }
 
 }

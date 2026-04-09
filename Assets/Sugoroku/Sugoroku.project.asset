@@ -13,19 +13,32 @@ MonoBehaviour:
   m_Name: Sugoroku.project
   m_EditorClassIdentifier: 
   excelList: []
-  chapterDataList: []
+  chapterDataList:
+  - chapterName: Boot
+    excelList:
+    - {fileID: 102900000, guid: 9d8dd57c13c9345a2b21276366f6c3f2, type: 3}
+    excelDir: {fileID: 0}
   checkWaitType: 0
   checkWhiteSpaceEndOfCell: 1
   checkTextCount: 1
   checkTextCountAllLanguage: 0
-  scenarios: {fileID: 0}
+  scenarios: {fileID: 11400000, guid: 36ab67b73e48848edbb66c0829651cb7, type: 2}
   autoImportType: 1
   convertPath: 
   convertVersion: 0
   isAutoUpdateVersionAfterConvert: 0
   isAutoConvertOnImport: 0
-  customInportSpriteFolders: []
-  customInportAudioFolders: []
+  customInportSpriteFolders:
+  - {fileID: 102900000, guid: 00abede61793a4ac1a1c32fdc824a5ea, type: 3}
+  - {fileID: 102900000, guid: 56a4d6f80256e45e49bbae3092f13df8, type: 3}
+  - {fileID: 102900000, guid: fcf8c29bfeb544665bb13ecb83610809, type: 3}
+  - {fileID: 102900000, guid: 445050eb37a5749ea9666132383b514e, type: 3}
+  - {fileID: 102900000, guid: 9fb3f5574811f42d4b565c5dcdc17fc7, type: 3}
+  customInportAudioFolders:
+  - {fileID: 102900000, guid: bbefc28908788406f901519bda62119a, type: 3}
+  - {fileID: 102900000, guid: 1e0c9c5309d6e4372a08a1ca16098ac6, type: 3}
+  - {fileID: 102900000, guid: 6343f8e3c973842fa994d2bf77f7955e, type: 3}
+  - {fileID: 102900000, guid: 299fa543ae5f34a9283a67cf814a2b40, type: 3}
   customInportMovieFolders: []
   quickImport: 0
   quickImportType: 0
@@ -36,4 +49,4 @@ MonoBehaviour:
   enableCommentOutOnImport: 1
   recourceDir: {fileID: 0}
   checkExt: 0
-  customProjectSetting: {fileID: 0}
+  customProjectSetting: {fileID: 11400000, guid: b3a5f398532594e8b9d764938aa04588, type: 2}

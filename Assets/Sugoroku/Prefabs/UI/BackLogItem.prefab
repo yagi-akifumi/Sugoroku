@@ -114,7 +114,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: db71264de2259487795c59fbdde185e6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e81badc3b01f45bc8fc7d5ea7934335, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -243,7 +243,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: a45eb03c74d75442aabac894dd787daa, type: 3}
     m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
@@ -272,10 +272,10 @@ MonoBehaviour:
   letterSpaceSize: 2
   wordWrap: -1
   lengthOfView: -1
-  textSettings: {fileID: 11400000, guid: 7977612e1a7b347b99b11d7b1d967d04, type: 2}
+  textSettings: {fileID: 11400000, guid: 51d09a8fc4b82422189f054be124e80e, type: 2}
   rubySizeScale: 0.5
   supOrSubSizeScale: 0.5
-  emojiData: {fileID: 11400000, guid: 4efc81b98ed0845d4b018f19fc2ff0a4, type: 2}
+  emojiData: {fileID: 11400000, guid: 52c54f991cd054df1bfd99259bde70e1, type: 2}
   dashChar: 8212
   bmpFontSize: 1
   isUnicodeFont: 0
@@ -346,7 +346,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: a45eb03c74d75442aabac894dd787daa, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -375,10 +375,10 @@ MonoBehaviour:
   letterSpaceSize: 2
   wordWrap: -1
   lengthOfView: -1
-  textSettings: {fileID: 11400000, guid: 7977612e1a7b347b99b11d7b1d967d04, type: 2}
+  textSettings: {fileID: 11400000, guid: 51d09a8fc4b82422189f054be124e80e, type: 2}
   rubySizeScale: 0.5
   supOrSubSizeScale: 0.5
-  emojiData: {fileID: 11400000, guid: 4efc81b98ed0845d4b018f19fc2ff0a4, type: 2}
+  emojiData: {fileID: 11400000, guid: 52c54f991cd054df1bfd99259bde70e1, type: 2}
   dashChar: 8212
   bmpFontSize: 1
   isUnicodeFont: 0
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0067feeb6d7354403b1baf87fa3be7da, type: 3}
+  m_Sprite: {fileID: 21300000, guid: df94c2d09c1cd4e2f912395d6bc7aea1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -116,7 +116,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: db71264de2259487795c59fbdde185e6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e81badc3b01f45bc8fc7d5ea7934335, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -142,7 +142,7 @@ MonoBehaviour:
   no: {fileID: 11400006}
   date: {fileID: 11400008}
   captureImage: {fileID: 11400010}
-  autoSaveIcon: {fileID: 2800000, guid: 832b8d47f91fd489a923138b93ca0453, type: 3}
+  autoSaveIcon: {fileID: 2800000, guid: 86741059254c4484282ce3c04fd8169a, type: 3}
   textEmpty: Empty
 --- !u!114 &11400014
 MonoBehaviour:
@@ -156,8 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7338c13e8f0b4173bd506c6aa80f0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: {fileID: 8300000, guid: e4af16b32ad1f49cb9946a7f75d097db, type: 3}
-  highlited: {fileID: 8300000, guid: a0a0a993364c4403496366849999c625, type: 3}
+  clicked: {fileID: 8300000, guid: c67d289d419f64274a827903c1bcacd2, type: 3}
+  highlited: {fileID: 8300000, guid: b7d82d3b26644487d8aa6dce38290728, type: 3}
   clickedPlayMode: 0
   highlitedPlayMode: 0
 --- !u!1 &100002
@@ -383,7 +383,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 63b1ca67183d34eec9b18562a7273ca1, type: 3}
+  m_Texture: {fileID: 2800000, guid: dd557803614ec478f86837f5a490e274, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -486,10 +486,10 @@ MonoBehaviour:
   letterSpaceSize: 1
   wordWrap: -1
   lengthOfView: -1
-  textSettings: {fileID: 11400000, guid: 7977612e1a7b347b99b11d7b1d967d04, type: 2}
+  textSettings: {fileID: 11400000, guid: 51d09a8fc4b82422189f054be124e80e, type: 2}
   rubySizeScale: 0.5
   supOrSubSizeScale: 0.5
-  emojiData: {fileID: 11400000, guid: 4efc81b98ed0845d4b018f19fc2ff0a4, type: 2}
+  emojiData: {fileID: 11400000, guid: 52c54f991cd054df1bfd99259bde70e1, type: 2}
   dashChar: 8212
   bmpFontSize: 0
   isUnicodeFont: 0
